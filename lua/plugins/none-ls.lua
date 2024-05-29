@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
   },
+  enable = false,
   config = function()
     local null_ls = require("null-ls")
 
