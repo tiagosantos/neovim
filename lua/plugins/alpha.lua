@@ -43,25 +43,18 @@ return {
       local greetingIndex = 0
       if hour == 23 or hour < 7 then
         greetingIndex = 1
-        ansiArt = "thisisfine"
       elseif hour < 12 then
         greetingIndex = 2
-        ansiArt = "gopher"
       elseif hour >= 12 and hour < 13 then
         greetingIndex = 3
-        ansiArt = "apple"
       elseif hour >= 13 and hour < 18 then
         greetingIndex = 3
-        ansiArt = "gopher_red"
       elseif hour >= 18 and hour < 21 then
         greetingIndex = 4
-        ansiArt = "unicorn"
       elseif hour >= 21 then
         greetingIndex = 5
-        ansiArt = "thisisfine"
       end
       return greetingsTable[greetingIndex]
-      -- return "\t" .. datetime .. "\t" .. greetingsTable[greetingIndex] .. ", " .. name
     end
 
     local userName = "Fredrik"
@@ -69,8 +62,8 @@ return {
     local width = 46
     local height = 25
 
-    -- dashboard.section.header.val = vim.split(logo .. "\n" .. greeting, "\n")
-    dashboard.section.header.val = greeting
+    dashboard.section.header.val = vim.split(logo .. "\n" .. greeting, "\n")
+    --dashboard.section.header.val = greeting
     dashboard.section.header.opts.hl = "DashboardHeader"
     dashboard.section.header.opts.position = "center"
     dashboard.section.terminal.width = width
