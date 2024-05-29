@@ -6,17 +6,52 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 		{ "hrsh7th/nvim-cmp" },
+		{ "j-hui/fidget.nvim", tag = "legacy" },
+		-- support for dart hot reload on save
+		{ "RobertBrunhage/dart-tools.nvim" },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+		-- used to enable autocompletion (assign to every lsp server config)
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+
+		-- import lspconfig plugin
+		local lspconfig = require("lspconfig")
+
+		lspconfig["dartls"].setup({
+			capabilities = capabilities,
+			cmd = {
+				"dart",
+				"language-server",
+				"--protocol=lsp",
+			},
+			filetypes = { "dart" },
+			init_options = {
+				onlyAnalyzeProjectsWithOpenFiles = false,
+				suggestFromUnimportedLibraries = true,
+				closingLabels = true,
+				outline = false,
+				flutterOutline = false,
+			},
+			settings = {
+				dart = {
+					analysisExcludedFolders = {
+						vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+						vim.fn.expand("$HOME/.pub-cache"),
+						vim.fn.expand("/opt/homebrew/"),
+						vim.fn.expand("$HOME/tools/flutter/"),
+					},
+					updateImportsOnRename = true,
+					completeFunctionCalls = true,
+					showTodos = true,
+				},
+			},
+		})
+
+		-- import mason_lspconfig plugin
+		local mason_lspconfig = require("mason-lspconfig")
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -67,9 +102,6 @@ return {
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
 		})
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
@@ -142,5 +174,10 @@ return {
 				})
 			end,
 		})
+		-- Tooltip for the lsp in bottom right
+		require("fidget").setup({})
+
+		-- Hot reload :)
+		require("dart-tools")
 	end,
 }
