@@ -73,7 +73,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
       dashboard.button("f", " " .. " Recent files", ":lua require('telescope').extensions.recent_files.pick()<CR>"),
-      dashboard.button("l", " " .. " Update plugins", ":Lazy<CR>"),
+      dashboard.button("L", " " .. " Update plugins", ":Lazy<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),
     }
     dashboard.config.layout = {
