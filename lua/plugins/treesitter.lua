@@ -5,8 +5,11 @@ return {
     local config = require("nvim-treesitter.configs")
     config.setup({
       ensure_instaled = { "lua", "javascript", "dart", "html", "ruby", "vue" },
-      highlight = { enable = true },
       indent = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { "markdown" }
+      },
     })
   end
 }
