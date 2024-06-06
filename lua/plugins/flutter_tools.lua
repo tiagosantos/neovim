@@ -37,7 +37,7 @@ return {
 			root_patterns = { ".git", "pubspec.yaml" }, -- patterns to find the root of your flutter project
 			fvm = true, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
 			widget_guides = {
-				enabled = false,
+				enabled = true,
 			},
 			closing_tags = {
 				highlight = "Comment", -- highlight for the closing tag
@@ -59,9 +59,9 @@ return {
 			},
 			lsp = {
 				color = { -- show the derived colours for dart variables
-					enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-					background = false, -- highlight the background
-					background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+					enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+					background = true, -- highlight the background
+					background_color = { r = 19, g = 17, b = 24 }, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
 					foreground = false, -- highlight the foreground
 					virtual_text = true, -- show the highlight using virtual text
 					virtual_text_str = "■", -- the virtual text character to highlight
@@ -78,7 +78,7 @@ return {
 					showTodos = true,
 					completeFunctionCalls = true,
 					renameFilesWithClasses = "prompt", -- "always"
-					-- enableSnippets = true,
+					enableSnippets = true,
 					updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
 				},
 			},

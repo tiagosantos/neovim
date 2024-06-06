@@ -20,35 +20,35 @@ return {
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
-		-- lspconfig["dartls"].setup({
-		-- 	capabilities = capabilities,
-		-- 	cmd = {
-		-- 		"dart",
-		-- 		"language-server",
-		-- 		"--protocol=lsp",
-		-- 	},
-		-- 	filetypes = { "dart" },
-		-- 	init_options = {
-		-- 		onlyAnalyzeProjectsWithOpenFiles = false,
-		-- 		suggestFromUnimportedLibraries = true,
-		-- 		closingLabels = true,
-		-- 		outline = false,
-		-- 		flutterOutline = false,
-		-- 	},
-		-- 	settings = {
-		-- 		dart = {
-		-- 			analysisExcludedFolders = {
-		-- 				vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
-		-- 				vim.fn.expand("$HOME/.pub-cache"),
-		-- 				vim.fn.expand("/opt/homebrew/"),
-		-- 				vim.fn.expand("$HOME/tools/flutter/"),
-		-- 			},
-		-- 			updateImportsOnRename = true,
-		-- 			completeFunctionCalls = true,
-		-- 			showTodos = true,
-		-- 		},
-		-- 	},
-		-- })
+		lspconfig["dartls"].setup({
+			capabilities = capabilities,
+			cmd = {
+				"dart",
+				"language-server",
+				"--protocol=lsp",
+			},
+			filetypes = { "dart" },
+			init_options = {
+				onlyAnalyzeProjectsWithOpenFiles = false,
+				suggestFromUnimportedLibraries = true,
+				closingLabels = true,
+				outline = false,
+				flutterOutline = false,
+			},
+			settings = {
+				dart = {
+					analysisExcludedFolders = {
+						vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+						vim.fn.expand("$HOME/.pub-cache"),
+						vim.fn.expand("/opt/homebrew/"),
+						vim.fn.expand("$HOME/tools/flutter/"),
+					},
+					updateImportsOnRename = true,
+					completeFunctionCalls = true,
+					showTodos = true,
+				},
+			},
+		})
 		--
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
