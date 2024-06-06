@@ -34,5 +34,34 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
+-- move lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Another keymaps from ThePrimeagen
+-- mostra diretório do arquivo
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- permite colar sem perder o clipboard
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- permite copiar do VIM para o clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- seleção
+vim.keymap.set("n", "<leader>Y", [["+Y]]) -- linha
+
+-- quick navegation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+-- find and replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- dá permissão de execução para um arquivo
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- :souce
+vim.keymap.set("n", "<leader><leader>", function()
+	vim.cmd("so")
+end)
