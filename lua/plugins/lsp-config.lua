@@ -32,8 +32,8 @@ return {
 				onlyAnalyzeProjectsWithOpenFiles = false,
 				suggestFromUnimportedLibraries = true,
 				closingLabels = true,
-				outline = false,
-				flutterOutline = false,
+				outline = true,
+				flutterOutline = true,
 			},
 			settings = {
 				dart = {
