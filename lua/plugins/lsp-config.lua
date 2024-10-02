@@ -153,6 +153,7 @@ return {
 						"scss",
 						"less",
 						"svelte",
+						"erb",
 					},
 				})
 			end,
